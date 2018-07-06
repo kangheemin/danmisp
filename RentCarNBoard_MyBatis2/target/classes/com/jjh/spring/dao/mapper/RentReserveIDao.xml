@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jjh.spring.dao.RentReserveIDao">
+
+	<select id="selectAll"
+		resultType="com.jjh.spring.dto.RentReserve">
+		SELECT *
+		FROM RENT_RESERVE
+	</select>
+
+	<select id="selectRegno"
+		resultType="com.jjh.spring.dto.RentReserve">
+		SELECT *
+		FROM RENT_RESERVE
+		WHERE REGNO = #{param1}
+	</select>
+
+	<select id="selectRday"
+		resultType="com.jjh.spring.dto.RentReserve">
+		SELECT *
+		FROM RENT_RESERVE
+		WHERE RDAY = #{param1}
+	</select>
+
+	<select id="selectMemid"
+		resultType="com.jjh.spring.dto.RentReserve">
+		SELECT *
+		FROM RENT_RESERVE
+		WHERE MEMID = #{param1}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO RENT_RESERVE
+		(REGNO,NO,QTY,DDAY,RDAY,INSURANCE,WIFI,NAVIGATION,BABYSEAT,MEMID)
+		VALUES (RESERVE_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3},
+		#{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9})
+	</insert>
+
+	<delete id="delete">
+		DELETE FROM RENT_RESERVE
+		WHERE REGNO = #{param1}
+	</delete>
+
+	<update id="update">
+		UPDATE RENT_RESERVE
+		SET
+			NO = #{param1},
+			RDAY = #{param2},
+			DDAY = #{param3},
+			QTY = #{param4},
+			INSURANCE = #{param5},
+			WIFI = #{param6},
+			NAVIGATION = #{param7},
+			BABYSEAT = #{param8},
+			MEMID = #{param9}
+		WHERE REGNO = #{param10}
+	</update>
+
+	<select id="selectAllView"
+		resultType="com.jjh.spring.dto.ReserveView">
+		SELECT *
+		FROM RESERVEVIEW
+		WHERE MEMID = #{param1}
+	</select>
+</mapper>
