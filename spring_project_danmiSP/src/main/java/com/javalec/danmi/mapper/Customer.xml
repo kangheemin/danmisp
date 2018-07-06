@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.javalec.danmi.dao.CustomerIDao">
+
+	<insert id="insert">
+		INSERT INTO CUSTOMER
+		(CID,CPASS,CNAME,CTEL,CADD,CSEX,CAGE,CBIRTH,CEMAIL,CCATEGORY,CSMS,CEMS)
+		VALUES (#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6},
+		#{param7}, #{param8}, #{param9}, #{param10}, #{param11}, #{param12})
+	</insert>
+
+	<delete id="delete">
+		DELETE FROM CUSTOMER
+		WHERE CID = #{param1}
+	</delete>
+
+	<update id="update">
+		UPDATE CUSTOMER 
+		SET 
+			CPASS = #{param1}, 
+			CTEL = #{param2}, 
+			CADD = #{param3},
+			CEMAIL = #{param4}, 
+			CCATEGORY = #{param5} 
+		WHERE CID = #{param6}
+	</update>
+
+	<select id="select" resultType="com.javalec.danmi.dto.Customer_Dto">
+		SELECT *
+		FROM CUSTOMER
+		WHERE CID = #{param1}
+	</select>
+
+	<select id="selectAll" resultType="com.javalec.danmi.dto.Customer_Dto">
+		SELECT *
+		FROM CUSTOMER
+	</select>
+
+	<select id="login" resultType="int">
+		SELECT COUNT(*) 
+		FROM CUSTOMER 
+		WHERE CID = #{param1} AND CPASS = #{param2}
+	</select>
+
+</mapper>
